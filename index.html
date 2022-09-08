@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pedido</title>
+    <STYle>
+        p{
+            text-align: center;
+            color: white;
+            font-size: 22pt;
+        }
+        button{
+            width: 200px;
+            height: 100px;
+            font-size: 32pt;
+            cursor: pointer;
+            background-color: pink;
+            color:white;
+            border: 1px solid palevioletred;
+        }
+        button:hover{
+            background-color: palevioletred;
+            border: 1px solid pink;
+        }
+        div{
+            width: 900px;
+            height: 500px;
+            margin: auto auto;
+        }
+        h1{
+            text-align: center;
+            font-size: 42pt;
+            color:white;
+        }
+        body{
+            background-color: rgb(255, 192, 203);
+        }
+        img{
+        
+            width: 200px;
+            height: 200px;
+        }
+        #nao{
+            position: absolute;
+            margin: 10px;
+        }
+    </STYle>
+</head>
+<body>
+    <div>
+        
+        <h1>QUER CASAR COMIGO?</h1>
+        <p></p>
+        <center>
+            <img src="norm.png" alt="">
+        </center>
+      <center>
+        <button id="sim">SIM</button>
+        <button id="nao">NÃO</button>
+    </center>
+    </div>
+    
+</body>
+<script>
+    const btn = document.getElementById('sim')
+    const img = document.querySelector('img')
+    const btn_nao = document.getElementById('nao')
+    const p = document.querySelector('p')
+    const h1 = document.querySelector('h1')
+    let vetor = ['Como assim não?','Não me ama mais?','AH PARA','BLZ VAI EMBORA!!!!']
+    let tam_w = 200
+    let tam_h = 100
+    let px = py = 0
+    let i = 1;
+    let d = 180
+    let j = 0
+    btn_nao.addEventListener('mouseover',function(){
+
+        px = Math.round(Math.random()*innerWidth)
+        py = Math.round(Math.random()*innerHeight)
+        if(px<window.innerWidth/2){
+            px+=200
+        }else{
+            px-=200
+        }
+        if(py<window.innerHeight/2){
+            py+=200
+        }else{
+            py-=200
+        }
+        if(tam_w>150){
+            tam_w-=10
+            tam_h-=10
+            i++
+            if(i>4){
+                i=4
+                j=3
+            }
+            img.src="r"+i+".png"
+            document.body.style.backgroundColor = 'rgb(255, '+d+', '+d+')'
+            d-=30
+            console.log(i)
+            p.innerHTML=vetor[j]
+            j++
+            if(j>3){
+                location.reload()
+            }
+        }
+     
+        this.style.width=tam_w+'px'
+        this.style.height=tam_h+'px'
+        this.style.left=px+"px"
+        this.style.top=py+"px"
+        
+    })
+    btn.addEventListener('mouseover',function(){
+        img.src='ev.png'
+        p.innerHTML = ''
+        document.body.style.backgroundColor='pink'
+        
+    })
+    btn.addEventListener('mouseout',()=>{
+        img.src='norm.png'
+    })
+    btn.addEventListener('click',()=>{
+        img.src='fe.png'
+        img.width='450px'
+        img.height='450px'
+        h1.innerHTML='AEEEEEEEEEEEE'
+        h1.style.fontSize='52pt'
+        btn_nao.remove()
+        btn.remove()
+        document.body.style.backgroundColor='red'
+    })
+
+</script>
+</html>
